@@ -1,0 +1,57 @@
+      - type: grid
+        cards:
+          - type: heading
+            heading: Bathroom 1
+            heading_style: title
+            icon: mdi:bathtub
+            badges: []
+          - type: horizontal-stack
+            cards:
+              - type: custom:mini-graph-card
+                entities:
+                  - entity: sensor.0x00158d000588ece4_temperature
+                name: Temperature
+                decimals: 1
+                font_size_header: 12
+                show_state: true
+                show:
+                  extrema: true
+                card_mod:
+                  style: |
+                    ha-card {
+                        -webkit-backdrop-filter: var(--ha-card-backdrop-filter,none);
+                        backdrop-filter: var(--ha-card-backdrop-filter,none);
+                        }
+
+                    ha-card > div.header.flex > div.name.flex > span {
+                      font-size: 20px;
+                      font-weight: 400;
+                      letter-spacing: -0.012em;
+                      font-color: #fff;
+                      opacity: 1;
+                    }
+              - type: custom:mini-graph-card
+                entities:
+                  - entity: sensor.0x00158d000588ece4_humidity
+                name: Humidity
+                decimals: 1
+                show_state: true
+                font_size_header: 12
+                line_color: '#e74c3c'
+                show:
+                  extrema: true
+                card_mod:
+                  style: |
+                    ha-card {
+                            -webkit-backdrop-filter: var(--ha-card-backdrop-filter,none);
+                            backdrop-filter: var(--ha-card-backdrop-filter,none);
+                            }
+
+
+                    ha-card > div.header.flex > div.name.flex > span {
+                      font-size: 20px;
+                      font-weight: 400;
+                      letter-spacing: -0.012em;
+                      font-color: #fff;
+                      opacity: 1;
+                    }
