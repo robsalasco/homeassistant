@@ -1,0 +1,47 @@
+      - type: grid
+        cards:
+          - type: heading
+            heading: News
+            heading_style: title
+            icon: mdi:newspaper
+          - type: custom:flex-table-card
+            max_rows: 8
+            entities:
+              - sensor.cooperativa_pais_feed
+            columns:
+              - name: Published
+                data: entries.published
+                modify: new Date(x).toLocaleString()
+              - name: Title
+                data: entries
+                modify: '''<a href="'' + x.link + ''" target="_blank">'' + x.title +''</a>'''
+            css:
+              table+: 'border: 0;'
+              tr: 'height: 40px;'
+              table tbody tr:nth-child(even): >-
+                background: rgba( 0, 0, 0, 0.4
+                );backdrop-filter:var(--ha-card-backdrop-filter,none);
+              table tbody tr:nth-child(odd): >-
+                background: rgba( 0, 0, 0, 0.5 );backdrop-filter:
+                var(--ha-card-backdrop-filter,none);
+              thead th: >-
+                background: rgba( 0, 0, 0, 0.5 );
+                backdrop-filter:var(--ha-card-backdrop-filter,none);
+              a:visited: 'color: var(--primary-text-color); text-decoration: none;'
+              a: 'color: var(--primary-text-color); text-decoration: none;'
+      - type: grid
+        cards:
+          - type: heading
+            icon: mdi:calendar
+            heading: Calendar
+            heading_style: title
+          - type: custom:calendar-card-pro
+            title: Upcoming Events
+            entities:
+              - entity: calendar.feriados_de_chile
+                color: '#e63946'
+              - entity: calendar.wala_rsalas_gmail_com
+                color: '#e63841'
+            days_to_show: 10
+            max_events_to_show: 5
+            show_location: true
