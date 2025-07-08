@@ -1,0 +1,80 @@
+      - type: grid
+        cards:
+          - type: heading
+            icon: mdi:sofa
+            heading: Living
+            heading_style: title
+            badges: []
+            grid_options:
+              columns: full
+              rows: 1
+          - type: horizontal-stack
+            cards:
+              - type: custom:mini-graph-card
+                entities:
+                  - entity: sensor.0x08ddebfffe102d4b_temperature
+                name: Temperature
+                font_size_header: 12
+                show_state: true
+                show:
+                  extrema: true
+                card_mod:
+                  style: |
+                    ha-card {
+                        -webkit-backdrop-filter: var(--ha-card-backdrop-filter,none);
+                        backdrop-filter: var(--ha-card-backdrop-filter,none);
+                        }
+
+                    ha-card > div.header.flex > div.name.flex > span {
+                      font-size: 20px;
+                      font-weight: 400;
+                      letter-spacing: -0.012em;
+                      font-color: #fff;
+                      opacity: 1;
+                    }
+              - type: custom:mini-graph-card
+                entities:
+                  - entity: sensor.0x08ddebfffe102d4b_humidity
+                name: Humidity
+                show_state: true
+                font_size_header: 12
+                line_color: '#e74c3c'
+                show:
+                  extrema: true
+                card_mod:
+                  style: |
+                    ha-card {
+                            -webkit-backdrop-filter: var(--ha-card-backdrop-filter,none);
+                            backdrop-filter: var(--ha-card-backdrop-filter,none);
+                            }
+
+
+                    ha-card > div.header.flex > div.name.flex > span {
+                      font-size: 20px;
+                      font-weight: 400;
+                      letter-spacing: -0.012em;
+                      font-color: #fff;
+                      opacity: 1;
+                    }
+          - type: media-control
+            entity: media_player.spotify_robsalasco
+          - type: custom:mini-media-player
+            entity: media_player.43_the_frame
+          - type: custom:mini-media-player
+            entity: media_player.43_the_frame_3
+            volume_stateless: false
+            artwork: none
+          - type: grid
+            cards:
+              - type: custom:mushroom-entity-card
+                entity: sensor.43_the_frame_tv_channel_name
+                name: Channel
+              - type: custom:mushroom-entity-card
+                entity: sensor.43_the_frame_energy_difference
+                name: Power
+            columns: 2
+            square: false
+          - type: tile
+            entity: sensor.light_sensor_43_the_frame_brightness_intensity
+          - type: tile
+            entity: sensor.light_sensor_43_the_frame_illuminance
