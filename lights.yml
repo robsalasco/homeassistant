@@ -1,0 +1,35 @@
+      - type: grid
+        cards:
+          - type: heading
+            icon: mdi:lamps
+            heading: Lights
+            heading_style: title
+          - type: custom:mushroom-light-card
+            entity: light.sonoff_dorm_1
+            name: Bedroom
+          - type: custom:mushroom-light-card
+            entity: light.sonoff_dorm_2
+            name: Office
+          - type: custom:mushroom-light-card
+            entity: light.aqara_living_bottom
+            name: Living
+          - type: custom:mushroom-light-card
+            entity: light.aqara_living_top
+            name: Balcony
+          - type: custom:mushroom-light-card
+            entity: light.aqara_kitchen_bottom
+            name: Kitchen 1
+          - type: custom:mushroom-light-card
+            entity: light.aqara_kitchen_top
+            name: Kitchen 2
+          - type: custom:mushroom-light-card
+            entity: light.0x001788010d1f6e0c
+            use_light_color: true
+            show_brightness_control: true
+            show_color_temp_control: true
+            show_color_control: true
+            fill_container: false
+            grid_options:
+              columns: 12
+              rows: 2
+        column_span: 1
