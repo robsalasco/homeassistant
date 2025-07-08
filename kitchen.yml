@@ -1,0 +1,48 @@
+      - type: grid
+        cards:
+          - type: heading
+            icon: mdi:fridge
+            heading: Kitchen
+            heading_style: title
+          - square: false
+            type: grid
+            cards:
+              - type: custom:mushroom-entity-card
+                entity: binary_sensor.0xa4c1387be922e66f_smoke
+                name: Detector
+              - type: custom:mushroom-entity-card
+                entity: sensor.0xa4c1387be922e66f_smoke_concentration
+                name: Concentration
+              - type: custom:mushroom-entity-card
+                entity: switch.0xa4c1387be922e66f_silence
+                name: Turn off alarm
+            columns: 2
+            title: Smoke sensor
+          - square: false
+            type: grid
+            cards:
+              - type: custom:mushroom-entity-card
+                entity: sensor.microwave_energy
+                name: Energy
+              - type: custom:mushroom-entity-card
+                entity: sensor.microwave_job_state
+                name: Job state
+              - type: custom:mushroom-entity-card
+                entity: sensor.microwave_temperature
+                name: Temperature
+              - type: custom:mushroom-entity-card
+                entity: sensor.microwave_oven_mode
+                name: Oven mode
+            columns: 2
+            title: Microwave
+          - type: custom:apexcharts-card
+            graph_span: 5d
+            header:
+              show: true
+              show_states: false
+              colorize_states: true
+            series:
+              - entity: sensor.microwave_temperature
+                stroke_width: 1.5
+                show:
+                  legend_value: false
