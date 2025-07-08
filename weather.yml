@@ -1,0 +1,117 @@
+          - type: heading
+            icon: mdi:weather-sunny
+            heading: Weather
+            heading_style: title
+          - type: custom:vertical-stack-in-card
+            cards:
+              - type: custom:better-moment-card
+                parentStyle: |
+                  line-height:normal;
+                moment:
+                  - parentStyle: |
+                      font-size:4em;  text-align:left; font-weight:400;
+                    templateRaw: |
+                      {{moment format=HH:mm}}
+                  - parentStyle: |
+                      font-size:1.9em; text-align:left; margin-top:5px;
+                    templateRaw: |
+                      {{moment format=cccc, dd LLLL}}
+              - type: custom:simple-weather-card
+                entity: weather.tomorrow_io_casa_daily
+                custom:
+                  - temp: sensor.govee_rear_patio_temp_rounded
+                name: ' '
+                primary_info:
+                  - precipitation
+                  - humidity
+                secondary_info:
+                  - wind_speed
+                  - wind_bearing
+              - type: custom:hourly-weather
+                entity: weather.tomorrow_io_casa_daily
+                num_segments: '12'
+                name: ' '
+                icons: true
+                show_wind: 'false'
+                show_date: 'false'
+                show_precipitation_amounts: false
+                show_precipitation_probability: false
+                round_temperatures: true
+                colors:
+                  clear-night: '#2e3440'
+                  cloudy: '#4c566a'
+                  partlycloudy: '#b2b7bf'
+                  rainy: '#5e81ac'
+                  sunny: '#ebcb8b'
+                card_mod:
+                  style: |
+                    ha-card {
+                     border: none;
+                    }
+              - type: custom:clock-weather-card
+                entity: weather.tomorrow_io_casa_daily
+                hide_clock: true
+                date_pattern: ccc, d.MM.yy
+                animated_icon: false
+                hide_today_section: true
+              - type: custom:tsmoon-card
+                language: en
+                icon_type: photo
+          - type: custom:vertical-stack-in-card
+            cards:
+              - type: custom:apexcharts-card
+                graph_span: 5d
+                header:
+                  show: true
+                  title: Temperature graph
+                  show_states: false
+                  colorize_states: false
+                  standard_format: true
+                series:
+                  - entity: sensor.openweathermap_temperature
+                    stroke_width: 1.5
+                    name: External
+                    show:
+                      legend_value: false
+                  - entity: sensor.0x00158d000588ece4_temperature
+                    stroke_width: 1.5
+                    name: Bath
+                    show:
+                      legend_value: false
+                  - entity: sensor.0x08ddebfffe102d4b_temperature
+                    stroke_width: 1.5
+                    name: Living
+                    show:
+                      legend_value: false
+              - type: custom:apexcharts-card
+                graph_span: 5d
+                header:
+                  show: true
+                  title: Humidity graph
+                  show_states: false
+                  colorize_states: false
+                  standard_format: true
+                series:
+                  - entity: sensor.openweathermap_humidity
+                    stroke_width: 1.5
+                    name: External
+                    show:
+                      legend_value: false
+                  - entity: sensor.0x00158d000588ece4_humidity
+                    stroke_width: 1.5
+                    name: Bath
+                    show:
+                      legend_value: false
+                  - entity: sensor.0x08ddebfffe102d4b_humidity
+                    stroke_width: 1.5
+                    name: Living
+                    show:
+                      legend_value: false
+            card_mod:
+              style: |
+                ha-card {
+                      -webkit-backdrop-filter: var(--ha-card-backdrop-filter,none);
+                      backdrop-filter: var(--ha-card-backdrop-filter,none);
+                      padding: 10px;
+                }
+        column_span: 2
