@@ -1,0 +1,79 @@
+    header:
+      layout: start
+      badges_position: bottom
+      card:
+        type: markdown
+        content: |-
+          # Hello {{ user }} 👋
+
+          I'm happy to assist you!
+      badges_wrap: wrap
+    badges:
+      - type: entity
+        show_name: false
+        show_state: true
+        show_icon: true
+        entity: weather.tomorrow_io_casa_daily
+        state_content: temperature
+      - type: entity
+        show_name: true
+        show_state: true
+        show_icon: true
+        entity: person.roberto
+        show_entity_picture: false
+        state_content: state
+      - type: custom:mushroom-template-badge
+        content: '{{states("sensor.robertos_iphone_battery_level")}} %'
+        icon: >-
+          {% set battery_level =
+          states('sensor.robertos_iphone_battery_level')|int %}
+              {% if battery_level | int > 90 %}
+                 mdi:battery-90
+                {% elif battery_level | int > 80 %}
+                 mdi:battery-80
+                 {% elif battery_level | int > 70 %}
+                 mdi:battery-70
+                 {% elif battery_level | int > 60 %}
+                 mdi:battery-60
+                 {% elif battery_level | int > 50 %}
+                 mdi:battery-50
+                 {% elif battery_level | int > 40 %}
+                 mdi:battery-40
+                 {% elif battery_level | int > 30 %}
+                 mdi:battery-30
+                 {% elif battery_level | int > 20 %}
+                 mdi:battery-20
+                 {% elif battery_level | int > 10 %}
+                 mdi:battery-10
+                {% else %}
+                 mdi:battery-alert-variant
+              {% endif %}
+        entity: sensor.0x08ddebfffe102d4b_temperature
+        label: iPhone
+        color: >-
+          {% set battery_level =
+          states('sensor.robertos_iphone_battery_level')|int %}
+              {% if battery_level | int > 70 %}
+                 green
+                {% elif battery_level | int > 40 %}
+                 yellow
+                {% else %}
+                 red
+              {% endif %}
+      - type: custom:mushroom-template-badge
+        content: '{{ states("sensor.robertos_iphone_steps") }}'
+        icon: mdi:walk
+        color: blue
+        label: Steps
+    type: sections
+    max_columns: 4
+    cards: []
+    top_margin: true
+    dense_section_placement: false
+    icon: mdi:home
+    background:
+      opacity: 100
+      alignment: center
+      size: cover
+      repeat: repeat
+      attachment: fixed
