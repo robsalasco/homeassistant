@@ -1,0 +1,31 @@
+      - type: grid
+        cards:
+          - type: heading
+            heading: Batteries
+            heading_style: title
+            icon: mdi:battery
+          - type: tile
+            entity: sensor.0x54ef441000850e74_battery
+            features_position: bottom
+            vertical: false
+            name: AqaraCube
+          - type: tile
+            entity: sensor.0x00158d000588ece4_battery
+            features_position: bottom
+            vertical: false
+            name: Bath temp sensor
+          - type: tile
+            entity: sensor.0xd44867fffe00eaf5_battery
+            features_position: bottom
+            vertical: false
+            name: Button 1
+          - type: tile
+            entity: sensor.0x00158d000967b741_battery
+            features_position: bottom
+            vertical: false
+            name: Button 2
+          - type: tile
+            entity: sensor.0xa4c1387be922e66f_battery
+            features_position: bottom
+            vertical: false
+            name: Smoke detector
