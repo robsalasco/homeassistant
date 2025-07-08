@@ -1,0 +1,58 @@
+      - type: grid
+        cards:
+          - type: heading
+            heading: System & Network
+            heading_style: title
+            icon: mdi:access-point-network
+          - type: grid
+            square: false
+            cards:
+              - type: custom:mushroom-entity-card
+                entity: sensor.node_acemagic_cpu_used
+                name: CPU
+              - type: custom:mushroom-entity-card
+                entity: sensor.node_acemagic_memory_used_percentage
+                name: RAM
+              - type: custom:mushroom-entity-card
+                entity: sensor.node_acemagic_containers_running
+                name: Containers running
+              - type: custom:mushroom-entity-card
+                entity: sensor.node_acemagic_last_boot
+                name: Last boot
+            columns: 2
+          - type: custom:uptime-card
+            entity: binary_sensor.1_1_1_1
+            hours_to_show: 72
+            title_adaptive_color: true
+            status_adaptive_color: true
+            icon: mdi:web
+            update_interval: 30
+            severity: 10
+            icon_adaptive_color: true
+            tooltip_adaptive_color: true
+            alias:
+              ok: Connected
+              ko: Disconnected
+            resources:
+              - url: /local/uptime-card.js
+              - type: module
+            show:
+              header: false
+          - square: false
+            type: grid
+            cards:
+              - type: custom:mushroom-entity-card
+                entity: sensor.adguard_home_dns_queries
+                name: DNS queries
+              - type: custom:mushroom-entity-card
+                entity: sensor.adguard_home_dns_queries_blocked
+                name: DNS queries blocked
+              - type: custom:mushroom-entity-card
+                entity: sensor.adguard_home_average_processing_speed
+                name: Average processing speed
+              - type: custom:mushroom-light-card
+                entity: switch.adguard_home_protection
+                tap_action:
+                  action: toggle
+                name: Protection
+            columns: 2
